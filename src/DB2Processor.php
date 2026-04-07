@@ -2,7 +2,6 @@
 
 namespace BWICompanies\DB2Driver;
 
-use BWICompanies\DB2Driver\DB2QueryGrammar;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Processors\Processor;
 
@@ -13,7 +12,7 @@ class DB2Processor extends Processor
         $sequenceStr = $sequence ?: 'id';
 
         if (is_array($sequence)) {
-            $grammar = new DB2QueryGrammar;
+            $grammar = $query->getGrammar();
             $sequenceStr = $grammar->columnize($sequence);
         }
 
